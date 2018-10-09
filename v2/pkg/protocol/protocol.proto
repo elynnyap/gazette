@@ -172,6 +172,15 @@ message JournalSpec {
       (gogoproto.stdduration) = true,
       (gogoproto.nullable) = false,
       (gogoproto.moretags) = "yaml:\",omitempty\""];
+
+    // Interval of time that determines when a current Fragment being created
+    // (aka a Spool) is closed and rolled. Time since the unix epoch is divided
+    // into units of length roll_interval, and any spool in a unit prior to
+    // the unit of the current time will be rolled.
+    google.protobuf.Duration roll_interval = 6 [
+      (gogoproto.stdduration) = true,
+      (gogoproto.nullable) = false,
+      (gogoproto.moretags) = "yaml:\",omitempty\""];
   }
   Fragment fragment = 4 [
     (gogoproto.nullable) = false,
